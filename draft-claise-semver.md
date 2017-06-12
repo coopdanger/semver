@@ -57,7 +57,7 @@ the IETF share a single, common numbering space, so that RFC numbers have no
 useful semantic.  Nonetheless, there is still a need to be able to capture the
 consensus of the IETF at critical points in the life-cycle of a specification.
 
-This document describes recommendations for how a WGs that wishes to produce
+This document describes recommendations for how a WG that wishes to produce
 structured specifications with semantic version numbers can interact best with
 IETF processes. 
 
@@ -79,12 +79,12 @@ processes:
 The fields in such a structured version have the following semantics (cf.
 semver.org):
 
-* MAJOR is incremented when the new version of the protocol is incompatible
-  with previous versions. 
+* MAJOR is incremented when the new version of the specification
+  is incompatible with previous versions. 
 * MINOR is incremented when new functionality is added in a manner that is
-  backward-compatible with previous versions
-* PATCH is incremented when bug fixes are made in a backward-compatible manner
-* BETA is incremented when 
+  backward-compatible with previous versions.
+* PATCH is incremented when bug fixes are made in a backward-compatible manner.
+* BETA is incremented when a new pre-release or testing version is made. 
 
 
 In IETF terms, this versioning scheme provides functionality equivalent to
@@ -97,30 +97,29 @@ several parts of the traditional IETF process.
 
 
 The more major a change to the specification, the more consensus is required.
-MAJOR changes must be subject to the IETF consensus process; every commit that
-is tagged with a MAJOR version change must also have a tag indicating the
+MAJOR changes MUST be subject to the IETF consensus process; every commit that
+is tagged with a MAJOR version change MUST also have a tag indicating the
 number of the RFC describing the change.
 
 For MINOR changes, the WG chairs need to decide whether IETF consensus is
 required or not, but WG consensus is always required.  Any change that
 significantly changes the security considerations for the protocol or requires
 additional IANA actions MUST be submitted for IETF consensus.  Changes without
-such impacts may be approved by consensus of the working group. PATCH-level
-changes may be made by the editors, with the consent of the WG chairs.
+such impacts MAY be approved by consensus of the working group. PATCH-level
+changes MAY be made by the editors, with the consent of the WG chairs.
 
 Typically, the working group will want to implement changes in the
 specification and discuss them before committing to a version.  While such
 changes can be implemented directly in the repository, it can be useful to mark
 certain versions as checkpoints, e.g., for reference at a hackathon.  These
 interim versions are marked with BETA numbers.  For example, a preliminary
-draft of a new feature for version 3 might be labeled "3.2.0-b2".  Versions
-submitted for working group or IETF last call must be tagged with a version of
-this form.
+draft of a new feature that would become version 3.2.0 might be labeled
+"3.2.0-b2".  Versions submitted for working group or IETF last call must be
+tagged with a version of this form.
 
-It is recommended that work on a new version be conducted on a dedicated
-branch.  Once there is consensus to update the main specification to that
-version, the branch should be merged, and the merge commit tagged with the new
-version number.
+Work on a new version SHOULD be conducted on a dedicated branch.  Once there is
+consensus to update the main specification to that version, the branch should
+be merged, and the merge commit tagged with the new version number.
 
 
 # IETF Consensus for Structured Specifications
