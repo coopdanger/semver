@@ -17,7 +17,7 @@ author:
  -
     ins: R. Barnes
     name: Richard Barnes
-    org: Mozilla
+    org: Cisco
     email: rlb@ipv.sx
 
 
@@ -26,8 +26,7 @@ author:
 In the Internet engineering ecosystem, there is increasingly a need for
 specifications that evolve over time, and are encoded directly in structured
 formats (e.g., YANG models).  Internet-Drafts are a poor fit for working groups
-that want to produce structured specifications, and one-off RFCs mixed into the
-overall RFC series can make it difficult to track an evolving specification.
+that want to produce structured specifications, and occasionally publishing an evolving specification as an RFC is a suboptimal way to track the specification over time.
 This document outlines recommendations for how working groups can provide
 semantic versioning and work directly on structured documents while still
 fitting within established IETF processes.
@@ -52,7 +51,7 @@ more quickly.
 
 The traditional practices of the IETF interact poorly with these mechanisms.
 Each document presented to the IETF for last call and IESG approval must be
-formatted as an Internet-Drafts, i.e., as unstructured text.  All RFCs across
+formatted as an Internet-Draft, i.e., as unstructured text.  All RFCs across
 the IETF share a single, common numbering space, so that RFC numbers have no
 useful semantic.  Nonetheless, there is still a need to be able to capture the
 consensus of the IETF at critical points in the life-cycle of a specification.
@@ -65,7 +64,7 @@ IETF processes.
 # Managing Semantic Versions
 
 We start from the premise that a working group controls a version-controlled
-repository for the specification, and can "tag" commits in the repository as
+repository for a structured specification (not formatted as an Internet-Draft), and can "tag" commits in the repository as
 having certain version numbers.
 
 The recommended structure for semantic versions follows the widely-used
@@ -87,24 +86,23 @@ semver.org):
 * BETA is incremented when a new pre-release or testing version is made. 
 
 
-In IETF terms, this versioning scheme provides functionality equivalent to
+In IETF terms, this versioning scheme provides functionality analagous to
 several parts of the traditional IETF process.
 
-* MAJOR replaces the "obsoletes" relation between RFCs
-* MINOR replaces the "updates" relation between RFCs
-* PATCH replaces the IETF errata process
-* BETA replaces Internet-draft versions
+* MAJOR is analogous to an "obsoletes" relation between RFCs
+* MINOR is analagous to an "updates" relation between RFCs
+* PATCH is analgous to use of the IETF errata process
+* BETA is analgous to incrementing an Internet-draft version
 
 
 The more major a change to the specification, the more consensus is required.
-MAJOR changes MUST be subject to the IETF consensus process; every commit that
+When the WG wants to make a MAJOR change to a structured specification, the specification MUST be converted into Internet-Draft format and run through the typical IETF consensus process. Every commit that
 is tagged with a MAJOR version change MUST also have a tag indicating the
 number of the RFC describing the change.
 
-For MINOR changes, the WG chairs need to decide whether IETF consensus is
-required or not, but WG consensus is always required.  Any change that
-significantly changes the security considerations for the protocol or requires
-additional IANA actions MUST be submitted for IETF consensus.  Changes without
+For MINOR changes, WG consensus is required. The WG chairs can additionally decide whether IETF consensus is
+required. Any change to the structured specification that significantly changes the security considerations for the protocol or requires
+additional IANA actions MUST be converted into Internet-Draft format and submitted for IETF consensus.  Changes without
 such impacts MAY be approved by consensus of the working group. PATCH-level
 changes MAY be made by the editors, with the consent of the WG chairs.
 
@@ -124,7 +122,7 @@ be merged, and the merge commit tagged with the new version number.
 
 # IETF Consensus for Structured Specifications
 
-While Working Groups may use any format for protocols under development. The
+While Working Groups may use any format for protocols under development, the
 Internet Standards process requires that a document proposed as an RFC must be
 submitted in the RFC format, i.e., as unstructured text.  Proposed RFCs are
 also required to contain explanatory text not typically contained in structured
@@ -147,7 +145,7 @@ RFC-formatted document as necessary.
 ~~~~~
 * a9d7d29 (tag:2.0.0, tag:RFCXXXX) Merge branch 'v2'
 |\
-| * df5d437 Responses WGLC and IETF LC comments
+| * df5d437 Responses to WGLC and IETF LC comments
 | | 
 | * 986ebb6 (tag:2.0.0-b2) Checkpoint for hackathon
 | | 
